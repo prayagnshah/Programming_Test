@@ -1,0 +1,67 @@
+<!-- Referred to the documentation: https://www.w3schools.com/tags/tag_doctype.asp -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Character encoding for the document -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Code Viewer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Heading for the page -->
+    <h1>Operator Code Viewer</h1>
+
+    <!-- Dropdown to filter operator codes -->
+    <label for="operatorFilter">Operator Code Filter:</label>
+    <select id="operatorFilter">
+        <option value="">All</option>
+        {% for operator in operators %}
+
+    <!-- Generated options for each operator code: AAAA or BBBB -->
+            <option value="{{ operator }}">{{ operator }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- Created table to display the table -->
+    <table border="1" id="data-table">
+        <thead>
+            <tr>
+                <th>Operator Code</th>
+                <th>Harvest Block</th>
+                <th>Hectares</th>
+            </tr>
+        </thead>
+        <tbody>
+    
+    <!-- Display the data in the table and rounding the place to 1 decimal according to the instructions -->
+            {% for record in data %}
+                <tr>
+                    <td>{{ record.OperatorCode }}</td>
+                    <td>{{ record.HarvestBlock }}</td>
+                    <td>{{ record.Hectares|round(1) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Implemented the JQuery function because for the filtering of the options selected by the user -->
+    <script>
+        $(document).ready(function() {
+            // Created event listener for the dropdown
+            $('#operatorFilter').on('change', function() {
+                const selectedOperator = $(this).val();
+                if (selectedOperator) {
+                    $('#data-table tbody tr').hide().filter(function() {
+                        return $(this).find('td').first().text() === selectedOperator;
+                    }).show();
+                } else {
+                    $('#data-table tbody tr').show();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
