@@ -28,4 +28,4 @@ Any IDE (e.g., VS Code)
 
 The output of the webpage is shown below:
 
-![Web Page](#output.png)
+![Web Page](output/output.png)
