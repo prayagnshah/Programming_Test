@@ -16,7 +16,7 @@ Any IDE (e.g., VS Code)
 
 ## Instructions 
 
-1.	Download the `Programming_Test` Zip Folder
+1.	Download the `Programming_Test` Zip Folder. Go to **Code** on the top right corner (Green color) and click on Download Zip
 2.	Extract it to a preferred location on your desktop
 3.	Open up a VS Code IDE or any other IDE of your preference installed on your device
 4.	Click on **File>Open Folder>Programming_Test>Select Folder**
